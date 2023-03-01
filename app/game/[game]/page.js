@@ -1,11 +1,11 @@
 import Image from "next/image";
-export const generateStaticParams = async () => {
+export async function generateStaticParams() {
   const res = await fetch(`https://gamespace-server.vercel.app/downloadGames`);
   const data = await res.json();
-  return data.map((game) => ({
+  return data?.map((game) => ({
     game: toString(game?._id),
   }));
-};
+}
 const GameDetails = async ({ params }) => {
   const res = await fetch(
     `https://gamespace-server.vercel.app/downloadGames/${params.game}`
