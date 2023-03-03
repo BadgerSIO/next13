@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 const GameDetails = async ({ params }) => {
-  console.log(params);
   const { game } = params;
   const res = await fetch(
     `https://gamespace-server.vercel.app/downloadGames/${game}`
@@ -17,6 +16,7 @@ const GameDetails = async ({ params }) => {
           height={`800`}
           alt={data?.title}
           className="rounded w-full h-[400px] object-cover border p-5 border-white/40"
+          priority
         />
       </div>
       <div className="col-span-3 space-y-5 text-gray-200 place-self-end">
@@ -25,8 +25,8 @@ const GameDetails = async ({ params }) => {
           Release date: {data?.releaseDate}
         </h3>
         <p>{data?.description}</p>
-        <button className="px-3 py-2 bg-white/10 hover:bg-sky-500/10 hover:text-sky-500 rounded border border-white/40 hover:border-sky-500/50">
-          Buy Now
+        <button className="px-3 py-2 bg-white/10 hover:bg-sky-500/10 hover:text-sky-500 rounded  hover:border-sky-500/50">
+          Get Now!
         </button>
       </div>
     </section>
@@ -37,7 +37,6 @@ export default GameDetails;
 export async function generateStaticParams() {
   const res = await fetch(`https://gamespace-server.vercel.app/downloadGames`);
   const data = await res.json();
-  console.log(data);
   return data?.map((hello) => ({
     game: hello?._id,
   }));

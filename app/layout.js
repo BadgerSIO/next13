@@ -1,7 +1,6 @@
-import Link from "next/link";
 import "./globals.css";
 import { Poppins, Playfair_Display } from "next/font/google";
-import Nav from "./Nav";
+import Nav from "./shared/Nav";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
