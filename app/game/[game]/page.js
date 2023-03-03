@@ -1,18 +1,13 @@
 import Image from "next/image";
-// export async function generateStaticParams() {
-//   const res = await fetch(`https://gamespace-server.vercel.app/downloadGames`);
-//   const data = await res.json();
-//   return data?.map((game) => ({
-//     game: toString(game?._id),
-//   }));
-// }
+
 const GameDetails = async ({ params }) => {
+  console.log(params);
+  const { game } = params;
   const res = await fetch(
-    `https://gamespace-server.vercel.app/downloadGames/${params.game}`
+    `https://gamespace-server.vercel.app/downloadGames/${game}`
   );
   const data = await res.json();
 
-  console.log(data);
   return (
     <section className="grid grid-cols-4 gap-5 container my-10 mx-auto">
       <div className="col-span-1">
@@ -20,6 +15,7 @@ const GameDetails = async ({ params }) => {
           src={data?.img}
           width={`800`}
           height={`800`}
+          alt={data?.title}
           className="rounded w-full h-[400px] object-cover border p-5 border-white/40"
         />
       </div>
@@ -38,3 +34,11 @@ const GameDetails = async ({ params }) => {
 };
 
 export default GameDetails;
+export async function generateStaticParams() {
+  const res = await fetch(`https://gamespace-server.vercel.app/downloadGames`);
+  const data = await res.json();
+  console.log(data);
+  return data?.map((hello) => ({
+    game: hello?._id,
+  }));
+}

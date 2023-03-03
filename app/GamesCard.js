@@ -11,6 +11,7 @@ const GamesCard = ({ game }) => {
           width="500"
           height="500"
           className="w-full h-64 object-cover border border-white/30"
+          alt={title}
         />
         <h2>{title}</h2>
         <button className="bg-white/10 rounded py-2 px-3 hover:bg-sky-500/20 hover:text-sky-500">
