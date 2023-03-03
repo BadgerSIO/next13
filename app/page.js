@@ -5,7 +5,7 @@ export default async function Home() {
   const res = await fetch(`https://gamespace-server.vercel.app/downloadGames`);
   const data = await res.json();
   return (
-    <main className="container mx-auto my-5">
+    <main className="container my-5">
       <h1 className={`font-playfair text-4xl lg:text-7xl text-center`}>
         Next <span className={styles.coloredTxt}>13</span>
       </h1>

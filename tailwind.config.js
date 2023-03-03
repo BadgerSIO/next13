@@ -18,6 +18,9 @@ module.exports = {
         fluid: "repeat(auto-fit,minmax(20rem,1fr))",
       },
     },
+    container: {
+      center: true,
+    },
   },
   plugins: [],
 };
